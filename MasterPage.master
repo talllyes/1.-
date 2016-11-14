@@ -1,0 +1,6 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<!DOCTYPE html>
+<html runat="server">
+    <asp:ContentPlaceHolder ID="all" runat="server">
+    </asp:ContentPlaceHolder>
+</html>

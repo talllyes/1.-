@@ -1,0 +1,43 @@
+﻿<div class="row" style="margin: 20px;">
+    <div class="col-lg-8 col-lg-offset-2 col-sm-12">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="kai-callout-new kai-callout-primary">
+                    <div>
+                        <div style="margin-bottom: 10px; font-size: 20px; text-align: center;">
+                            使用者列表
+                        </div>
+                        <div class="kai-hr"></div>
+                        <input type="text" ng-model="manage.userSearch" style="margin-top: 10px; margin-bottom: 10px;" maxlength="18" class="form-control" placeholder="快速搜尋" />
+                        <div class="kai-hr"></div>
+                        <div class="list-group" style="width: 100%;">
+                            <div ng-repeat="User in manage.User|searchUserKey:manage.userSearch|limitTo:6">
+                                <a href="#" class="list-group-item" ng-click="manage.editUser('edit',User)" style="border: 0px; border-bottom: 1px solid #C9C9C9; font-size: 16px;">
+                                    姓名：{{User.UserName}}
+                                    <br />
+                                    職稱：{{User.JobTitle}}
+                                </a>
+                                <div class="kai-hr"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <div class="kai-callout-new kai-callout-info">
+                    <div id="newUserDiv" class="collapse in">
+                        <div ng-include="manage.Url.NewUser"></div>
+                        <div id="newUserBase" class="collapse">
+                            <div ng-include="manage.Url.NewUserBase"></div>
+                            <div ng-include="manage.Url.NewPermission"></div>
+                        </div>
+                    </div>
+                    <div id="editUserDiv" class="collapse">
+                        <div ng-include="manage.Url.UserBase"></div>
+                        <div ng-include="manage.Url.Permission"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿<div style="margin-bottom: 10px; font-size: 20px; text-align: center;">    
+    <span style="line-height:40px;text-align:center;">新增使用者</span>
+    <button type="button" style="margin-right:0px;border:0px;" class="btn btn-default pull-right fontBigSmaill" ng-click="manage.showNewUser('no')" data-toggle="tooltip" data-placement="bottom" title="取消">
+        <i class="fa fa-times"></i>
+    </button>
+</div>
+<div class="panel panel-info nobr" style="border-color: #CFCFCF;">
+    <div class="panel-body">
+        <div class="row" style="font-size: 18px;">
+            <div class="col-md-12" style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px;">
+                <div style="padding-left: 25px; line-height: 34px; vertical-align: middle; margin-bottom: 10px;">
+                    <span class="boxTitle">基本資料</span>
+                </div>
+                <div class="kai-hr"></div>
+            </div>
+            <div class="col-md-12 fontBigSmaill" style="margin-bottom: 10px; vertical-align: middle; line-height: 34px;">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-3">
+                        <div class="pull-right">
+                            帳號：
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-9">
+                        <input type="text" ng-model="manage.NewUserMenu.UserID" style="width: 80%;" maxlength="18" class="form-control" placeholder="帳號" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 fontBigSmaill" style="margin-bottom: 10px; vertical-align: middle; line-height: 34px;">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-3">
+                        <div class="pull-right">
+                            密碼：
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-9">
+                        <input type="password" ng-model="manage.NewUserMenu.Password" style="width: 80%;" maxlength="18" class="form-control" placeholder="密碼" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 fontBigSmaill" style="margin-bottom: 10px; vertical-align: middle; line-height: 34px;">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-3">
+                        <div class="pull-right">
+                            姓名：
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-9">
+                        <input type="text" ng-model="manage.NewUserMenu.UserName" style="width: 80%;" maxlength="18" class="form-control" placeholder="姓名" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 fontBigSmaill" style="margin-bottom: 10px; vertical-align: middle; line-height: 34px;">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-3">
+                        <div class="pull-right">
+                            職稱：
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-xs-9">
+                        <input type="text" ng-model="manage.NewUserMenu.JobTitle" style="width: 80%;" maxlength="18" class="form-control" placeholder="職稱" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

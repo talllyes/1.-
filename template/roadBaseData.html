@@ -1,0 +1,27 @@
+﻿<div ng-controller="roadBaseData as roadBase" style="background-color:#E8E8E8;border-color:#BABABA;">
+    <!-- 載入基本資料區 -->
+    <div ng-include="mapBase.url.IntersectionBase"></div>
+
+    <div style="padding:10px;background-color:#E8E8E8;" ng-repeat="nowSelectVer in mapBase.nowSelectVer">
+
+        <div class="row">
+            <div class="col-xs-7">
+                <!-- 載入基本資料區 -->
+                <div ng-include="mapBase.url.IntersectionDetailBase"></div>
+            </div>
+            <div class="col-xs-5">
+                <!-- 載入周日內星期時段類型區 -->
+                <div ng-include="mapBase.url.WeekType"></div>
+            </div>
+        </div>
+        <!-- 載入時段型態區 -->
+        <div ng-include="mapBase.url.TimeIntervalType"></div>
+
+        <!-- 載入時制計劃區 -->
+        <div ng-include="mapBase.url.TimePlan"></div>
+
+        <!-- 載入時相區 -->
+        <div ng-include="mapBase.url.TimePhase"></div>
+
+    </div>
+</div>

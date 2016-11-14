@@ -1,0 +1,200 @@
+﻿<div ng-controller="noticeData as notice">
+    <nav class="navbar navbar-default" role="navigation" style="border-radius:0px;background-color:#ffffff;border-top-color:#B0B0B0;border-bottom-color:#B0B0B0;margin-bottom:0px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">通報紀錄</a>
+            </div>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="notice.noticeSearch" ng-change="notice.ff()" placeholder="快速搜尋">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="notice.noticeSearch=''">清空</button>
+            </form>
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+            </script>
+            <div class="navbar-form navbar-right">
+                <button type="button" class="btn btn-default" ng-click="notice.newData('edit','1')" ng-if="mapBase.Premission.ItemName[5].Permission" data-toggle="tooltip" data-placement="bottom" title="新增異動">
+                    <i class="fa fa-file-o"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div style="background-color:#E8E8E8;border-color:#BABABA;padding:10px;">
+        <div class="row collapse" id="noticInster1" style="padding-top:0px;">
+            <div class="col-md-12">
+                <div class="kai-callout kai-callout-primary fontBigSmaill" style="background-color:white;border-left-color:#CFCFCF;border-right-color:#CFCFCF;border-bottom-color:#CFCFCF;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            新增通報
+                        </div>
+                        <div class="col-md-12">
+                            <hr />
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">通報單位</div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="通報單位" ng-model="notice.insertValue.Who">
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">通報內容</div>
+                            <div class="col-md-9">
+                                <input type="text" readonly id="noticeDate" class="form-control" placeholder="日期" ng-model="notice.insertValue.NoticeDate">
+                                <script>
+                                    $('#noticeDate').datetimepicker({
+                                        autoclose: true,
+                                        todayHighlight: true,
+                                        format: 'yyy-mm-dd hh:ii',
+                                        language: "zh-TW"
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">通報內容</div>
+                            <div class="col-md-9">
+                                <textarea type="text" style="height:100px;" class="form-control" placeholder="通報內容" ng-model="notice.insertValue.NoticeContent"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">處理結果</div>
+                            <div class="col-md-9">
+                                <textarea style="height:100px;" class="form-control" placeholder="處理結果" ng-model="notice.insertValue.Result"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">備註</div>
+                            <div class="col-md-9">
+                                <textarea class="form-control" style="height:100px;" placeholder="備註" ng-model="notice.insertValue.Remark"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div style="margin-top:10px;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary" style="width:100%" ng-click="notice.newData('ok','1')">確定</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-default" style="width:100%" ng-click="notice.newData('no','1')">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row collapse" id="noticUpdate1" style="padding-top:0px;">
+            <div class="col-md-12">
+                <div class="kai-callout kai-callout-primary fontBigSmaill" style="background-color:white;border-left-color:#CFCFCF;border-right-color:#CFCFCF;border-bottom-color:#CFCFCF;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            修改通報
+                            <button type="button" style="border:0px;" class="btn btn-default pull-right" ng-click="notice.updateData('delete',notice.updateValue.NoticeID)" data-toggle="tooltip" data-placement="bottom" title="刪除此筆通報">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <hr />
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">通報單位</div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="通報單位" ng-model="notice.updateValue.Who">
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">通報內容</div>
+                            <div class="col-md-9">
+                                <input type="text" readonly id="noticeUpDate" class="form-control" placeholder="日期" ng-model="notice.updateValue.NoticeDate">
+                                <script>
+                                    $('#noticeUpDate').datetimepicker({
+                                        autoclose: true,
+                                        todayHighlight: true,
+                                        format: 'yyy-mm-dd hh:ii',
+                                        language: "zh-TW"
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">通報內容</div>
+                            <div class="col-md-9">
+                                <textarea type="text" style="height:100px;" class="form-control" placeholder="通報內容" ng-model="notice.updateValue.NoticeContent"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">處理結果</div>
+                            <div class="col-md-9">
+                                <textarea style="height:100px;" class="form-control" placeholder="處理結果" ng-model="notice.updateValue.Result"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">備註</div>
+                            <div class="col-md-9">
+                                <textarea class="form-control" style="height:100px;" placeholder="備註" ng-model="notice.updateValue.Remark"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div style="margin-top:10px;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary" style="width:100%" ng-click="notice.updateData('ok','1')">確定</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-default" style="width:100%" ng-click="notice.updateData('no','1')">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info nobr collapse in" style="border-color:#CFCFCF;"  id="noticShow1">
+            <div class="panel-body" style="padding-top:0px;padding-bottom:0px;">
+                <div class="row" style="font-size:18px;">
+                    <div style="text-align:right;">
+                        <nav class="" style="margin:10px;">
+                            <ul class="pagination">
+                                <li class="disabled" id="leftbtn"><a href="#" ng-click="notice.gogo(not,'left')"><span aria-hidden="true">上一頁</span><span class="sr-only">Previous</span></a></li>
+                                <li id="notPage{{not+1}}" ng-class="{active: not == mapBase.nowNoticeSelect}" ng-repeat="not in notice.range()"><a href="#" ng-click="notice.gogo(not,'this')">{{not+1}}</a></li>
+                                <li id="rightbtn"><a href="#" ng-click="notice.gogo(not,'right')"><span aria-hidden="true">下一頁</span><span class="sr-only">Next</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="kai-hr"></div>
+                    <table class="table table-striped " style="margin-bottom:0px;">
+                        <thead>
+                            <tr>
+                                <th style="width:15%;text-align:center;">通報單位</th>
+                                <th style="width:15%;text-align:center;" >日期時間</th>
+                                <th style="width:27%">通報內容</th>
+                                <th style="width:26%">處理結果</th>
+                                <th style="width:10%">備註</th>
+                                <th style="width:7%" ng-if="mapBase.Premission.ItemName[5].Permission">編輯</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="Notice in mapBase.Notice | searchNoticeKey:notice.noticeSearch">
+                                <td style="text-align:center;" ng-bind-html="Notice.Who"></td>
+                                <td style="text-align:center;" ng-bind-html="Notice.NoticeDate"></td>
+                                <td ng-bind-html="Notice.NoticeContent"></td>
+                                <td ng-bind-html="Notice.Result"></td>
+                                <td ng-bind-html="Notice.Remark"></td>
+                                <td ng-if="mapBase.Premission.ItemName[5].Permission">
+                                    <button type="button" style="border-color:white;" class="btn btn-default pull-right" ng-click="notice.updateData('edit',$index,Notice)" data-toggle="tooltip" data-placement="bottom" title="新增路口點位">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>                               
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,164 @@
+﻿<div class="panel panel-info nobr" style="padding:10px;padding-top:0px;">
+    <div class="panel-body">
+        <div class="row" style="font-size:18px;">
+            <div class="col-md-12" style="padding-left:10px;padding-right:10px;margin-bottom:10px;">
+                <div style="padding-left:25px;line-height:34px;vertical-align:middle;border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid;padding-bottom:10px;">
+                    <span class="boxTitle">時相</span>
+                    <span ng-show="mapBase.nowSelectVer[0].State">
+                        <button type="button" style="margin-right:0px;border:0px;" ng-show="roadBase.allEditIcno" class="btn btn-default pull-right fontBigSmaill" ng-click="roadBase.newTimePhase('edit',mapMake.IntersectionDetailID,mapBase.nowSelectVer[0].State)" ng-if="mapBase.Premission.ItemName[3].Permission" data-toggle="tooltip" data-placement="bottom" title="新增時相">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                    <button type="button" style="margin-right:0px;border:0px;" class="btn btn-default pull-right fontBigSmaill" ng-click="roadBase.moveTimePlan('left')" data-toggle="tooltip" data-placement="bottom" title="往右">
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
+                    <button type="button" style="margin-right:0px;border:0px;" class="btn btn-default pull-right fontBigSmaill" data-toggle="tooltip" data-placement="bottom" title="時相數量">
+                        {{mapBase.nowSelectVer[0].TimePhase.length}}
+                    </button>
+                    <button type="button" style="margin-right:0px;border:0px;" class="btn btn-default pull-right fontBigSmaill" ng-click="roadBase.moveTimePlan('right')" data-toggle="tooltip" data-placement="bottom" title="往左">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+            </script>
+            <div id="newTimePhase1" class="collapse col-md-12">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="bs-callout bs-callout-info" style="background-color:white;border-top-color:#CFCFCF;border-right-color:#CFCFCF;border-bottom-color:#CFCFCF;">
+                                <div style="margin-bottom:10px;">新增時相</div>
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-6">
+                                        <button type="button" style="width:100%" class="btn btn-primary" ng-click="roadBase.newTimePhase('ok',mapMake.IntersectionDetailID,mapBase.nowSelectVer[0].State)">確定</button>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <button type="button" style="width:100%" class="btn btn-default" ng-click="roadBase.newTimePhase('no',mapMake.IntersectionDetailID,mapBase.nowSelectVer[0].State)">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-xs-6" ng-repeat="TimePhase in nowSelectVer.TimePhase" ng-show="roadBase.timePlanDetail{{$index+1}}">
+                        <div class="kai-callout kai-callout-info" style="padding:0px;">
+                            <div style="padding:10px;padding-left:20px;border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid;">
+                                時相{{$index+1}}
+                                <span ng-show="mapBase.nowSelectVer[0].State">
+                                    <button type="button" style="border:0px;" ng-show="roadBase.allEditIcno" class="btn btn-default pull-right" ng-click="roadBase.deletTimePhase('edit',$index,TimePhase.TimePhaseID,mapBase.nowSelectVer[0].State)" ng-if="mapBase.Premission.ItemName[3].Permission" data-toggle="tooltip" data-placement="bottom" title="刪除時相">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" style="border:0px;" ng-show="roadBase.allEditIcno" class="btn btn-default pull-right" ng-click="roadBase.editTimePhase('edit',$index,TimePhase.TimePhaseID,mapBase.nowSelectVer[0].State)" ng-if="mapBase.Premission.ItemName[3].Permission" data-toggle="tooltip" data-placement="bottom" title="修改時相">
+                                        <i class="fa fa-pencil" style="font-size:16px;"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <script>
+                                $(function () {
+                                    $('[data-toggle="tooltip"]').tooltip()
+                                })
+                            </script>
+                            <div id="timePhaseShow{{TimePhase.TimePhaseID}}" class="collapse in">
+                                <div style="padding:10px;padding-left:20px;border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid;">
+                                    <div ng-bind-html="TimePhase.TimePhaseRoad"></div>
+                                </div>
+                                <table class="table table-striped " style="margin-bottom:0px;text-align:center;" ng-hide="true">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;width:20%">計畫</th>
+                                            <th style="text-align:center;width:20%">ＰＨ</th>
+                                            <th style="text-align:center;width:20%">Ｇ</th>
+                                            <th style="text-align:center;width:20%">Ｙ</th>
+                                            <th style="text-align:center;width:20%">Ｒ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="TimePhaseDetail in TimePhase.TimePhaseDetail">
+                                            <td>
+                                                {{TimePhaseDetail.TimePlanSN}}
+                                            </td>
+                                            <td>
+                                                {{TimePhaseDetail.PH}}
+                                            </td>
+                                            <td>
+                                                {{TimePhaseDetail.G}}
+                                            </td>
+                                            <td>
+                                                {{TimePhaseDetail.Y}}
+                                            </td>
+                                            <td>
+                                                {{TimePhaseDetail.R}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div style="border:0px;border-top:1px;border-color:#B0B0B0;border-style:solid;text-align:center;">
+                                    <img ng-src="{{TimePhase.ImgSrc}}" style="width:100%;height:300px;" id="timePhasex{{TimePhase.TimePhaseID}}">
+                                </div>
+                            </div>
+                            <div id="timePhaseEdit{{TimePhase.TimePhaseID}}" class="collapse">
+                                <div style="padding:10px;padding-left:20px;border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid;">
+                                    <textarea type="text" rows="3" maxlength="98" class="form-control" placeholder="" ng-model="TimePhase.TimePhaseRoad"></textarea>
+                                </div>
+                                <div style="border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid" ng-hide="true"></div>
+                                <div class="row" style="margin:10px;" ng-hide="true">
+                                    <div class="pull-right">
+                                        <button type="button" style="border:0px;" class="btn btn-default" ng-click="roadBase.editTimePhase('plus',$index,TimePhase.TimePhaseID)" data-toggle="tooltip" data-placement="bottom" title="新增路口點位">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="pull-right">
+                                        <button type="button" style="border:0px;" class="btn btn-default" ng-click="roadBase.editTimePhase('minus',$index,TimePhase.TimePhaseID)" data-toggle="tooltip" data-placement="bottom" title="新增路口點位">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="timePhaseImg{{TimePhase.TimePhaseID}}" class="collapse in">
+                                    <div style="border:0px;border-top:1px;border-color:#B0B0B0;border-style:solid;text-align:center;">
+                                        <img ng-src="{{TimePhase.ImgSrc}}" style="width:100%;height:300px;" id="timePhase{{TimePhase.TimePhaseID}}">
+                                    </div>
+                                </div>
+                                <form action="json/UploadData.ashx?type=img" method="post" id="ajaxImg{{TimePhase.TimePhaseID}}">
+                                    <div style="padding:5px;">
+                                        <input class="btn btn-primary" style="width:100%;" type="file" id="pic{{TimePhase.TimePhaseID}}" name="pic{{TimePhase.TimePhaseID}}" onchange="angular.element(this).scope().roadBase.uploadImg(this)">
+                                    </div>
+                                </form>
+                                <div style="margin:10px;padding-left:10px;padding-right:10px">
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-6">
+                                            <button type="button" style="width:100%" class="btn btn-primary" ng-click="roadBase.editTimePhase('ok',$index,TimePhase.TimePhaseID,mapBase.nowSelectVer[0].State)">確定</button>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <button type="button" style="width:100%" class="btn btn-default" ng-click="roadBase.editTimePhase('no',$index,TimePhase.TimePhaseID,mapBase.nowSelectVer[0].State)">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="timePhaseDelete{{TimePhase.TimePhaseID}}" class="collapse">
+                                <div class="modal-body">
+                                    是否確定刪除？
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-6">
+                                            <button type="button" style="width:100%;" class="btn btn-primary" ng-click="roadBase.deletTimePhase('ok',$index,TimePhase.TimePhaseID,mapBase.nowSelectVer[0].State)">確定</button>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <button type="button" style="width:100%;" class="btn btn-default" ng-click="roadBase.deletTimePhase('no',$index,TimePhase.TimePhaseID,mapBase.nowSelectVer[0].State)">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

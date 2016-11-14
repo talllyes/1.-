@@ -1,0 +1,148 @@
+﻿<div class="panel panel-info nobr" style="padding:10px;padding-top:0px;">
+    <div class="panel-body">
+        <div class="row" style="font-size:18px;">
+            <div class="col-md-12" style="padding-left:10px;padding-right:10px;margin-bottom:10px;">
+                <div style="padding-left:25px;line-height:34px;vertical-align:middle;border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid;padding-bottom:10px;">
+                    <span class="boxTitle">時段型態</span>
+                    <span ng-show="mapBase.nowSelectVer[0].State">
+                        <button type="button" style="border-color:white;" ng-show="roadBase.allEditIcno" class="btn btn-default pull-right" ng-click="roadBase.newTimeType('edit',nowSelectVer.IntersectionDetailID,mapBase.nowSelectVer[0].State)" ng-if="mapBase.Premission.ItemName[3].Permission" data-toggle="tooltip" data-placement="bottom" title="新增時段型態">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                    <script>
+                        $(function () {
+                            $('[data-toggle="tooltip"]').tooltip()
+                        })
+                    </script>
+                </div>
+            </div>
+            <div id="newTimeType1" class="collapse col-md-12">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="bs-callout bs-callout-info" style="background-color:white;border-top-color:#CFCFCF;border-right-color:#CFCFCF;border-bottom-color:#CFCFCF;">
+                                <div style="margin-bottom:10px;">新增時段型態</div>
+                                <input style="margin-bottom:10px;" maxlength="2" type="text" class="form-control" placeholder="時段型態" ng-model="roadBase.insertValue.timeType">
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-6">
+                                        <button type="button" class="btn btn-primary fontBigSmaill" style="width:100%;" ng-click="roadBase.newTimeType('ok',nowSelectVer.IntersectionDetailID,mapBase.nowSelectVer[0].State)">確定</button>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <button type="button" class="btn btn-default fontBigSmaill" style="width:100%;" ng-click="roadBase.newTimeType('no',nowSelectVer.IntersectionDetailID,mapBase.nowSelectVer[0].State)">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4" ng-repeat="TimeIntervalType in nowSelectVer.TimeIntervalType">
+                <div class="kai-callout kai-callout-info" style="padding:0px;">
+                    <div style="padding:5px;padding-left:20px;">
+                        類型：{{TimeIntervalType.TimeType}}
+                        <span ng-show="mapBase.nowSelectVer[0].State">
+                            <button type="button" style="border:0px;" ng-show="roadBase.allEditIcno" class="btn btn-default pull-right" ng-click="roadBase.deletTimeType('edit',$index,TimeIntervalType.TimeIntervalTypeID,mapBase.nowSelectVer[0].State)" ng-if="mapBase.Premission.ItemName[3].Permission" data-toggle="tooltip" data-placement="bottom" title="刪除">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" style="border:0px;" ng-show="roadBase.allEditIcno" class="btn btn-default pull-right" ng-click="roadBase.editTypeTime('edit',$index,TimeIntervalType.TimeIntervalTypeID,mapBase.nowSelectVer[0].State)" ng-if="mapBase.Premission.ItemName[3].Permission" data-toggle="tooltip" data-placement="bottom" title="修改">
+                                <i class="fa fa-pencil" style="font-size:16px;"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <script>
+                        $(function () {
+                            $('[data-toggle="tooltip"]').tooltip()
+                        })
+                    </script>
+                    <hr style="margin:3px;" />
+                    <div class="collapse in" id="timeTypeShow{{TimeIntervalType.TimeIntervalTypeID}}">
+                        <table class="table table-striped" style="margin-bottom:0px;text-align:center;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;">時</th>
+                                    <th style="text-align:center;">分</th>
+                                    <th style="text-align:center;">時制計劃</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="TimeIntervalTypeDetail in TimeIntervalType.TimeIntervalTypeDetail">
+                                    <td>{{TimeIntervalTypeDetail.Hour}}</td>
+                                    <td>{{TimeIntervalTypeDetail.Minute}}</td>
+                                    <td>{{TimeIntervalTypeDetail.TimePlanSN}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="collapse" id="timeTypeEdit{{TimeIntervalType.TimeIntervalTypeID}}">
+                        <table class="table table-striped" style="margin-bottom:0px;text-align:center;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;">時</th>
+                                    <th style="text-align:center;">分</th>
+                                    <th style="text-align:center;">時制計劃</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="TimeIntervalTypeDetail in TimeIntervalType.TimeIntervalTypeDetail">
+                                    <td>
+                                        <select ng-model="TimeIntervalTypeDetail.Hour" ng-options="m for m in roadBase.selectHour"></select>
+                                    </td>
+                                    <td>
+                                        <select ng-model="TimeIntervalTypeDetail.Minute" ng-options="m for m in roadBase.selectMinute"></select>
+                                    </td>
+                                    <td>
+                                        <select ng-model="TimeIntervalTypeDetail.TimePlanSN" ng-options="m for m in roadBase.selectValue.TimePlan"></select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid"></div>
+                        <div class="row" style="margin:10px;">
+                            <div class="pull-right">
+                                <button type="button" style="border:0px;" class="btn btn-default" ng-click="roadBase.editTypeTime('plus',$index,TimeIntervalType.TimeIntervalTypeID,mapBase.nowSelectVer[0].State)" data-toggle="tooltip" data-placement="bottom" title="新增一筆">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div class="pull-right">
+                                <button type="button" style="border:0px;" class="btn btn-default" ng-click="roadBase.editTypeTime('minus',$index,TimeIntervalType.TimeIntervalTypeID,mapBase.nowSelectVer[0].State)" data-toggle="tooltip" data-placement="bottom" title="刪除一筆">
+                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <script>
+                            $(function () {
+                                $('[data-toggle="tooltip"]').tooltip()
+                            })
+                        </script>
+                        <div style="border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid"></div>
+                        <div style="margin:10px;padding-left:10px;padding-right:10px">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-6">
+                                    <button type="button" style="width:100%" class="btn btn-primary" ng-click="roadBase.editTypeTime('ok',$index,TimeIntervalType.TimeIntervalTypeID,mapBase.nowSelectVer[0].State)">確定</button>
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                    <button type="button" style="width:100%" class="btn btn-default" ng-click="roadBase.editTypeTime('no',$index,TimeIntervalType.TimeIntervalTypeID,mapBase.nowSelectVer[0].State)">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="timeTypeDelete{{TimeIntervalType.TimeIntervalTypeID}}" class="collapse">
+                        <div class="modal-body">
+                            是否確定刪除？
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-6">
+                                    <button type="button" class="btn btn-primary" style="width:100%;" ng-click="roadBase.deletTimeType('ok',$index,TimeIntervalType.TimeIntervalTypeID,mapBase.nowSelectVer[0].State)">確定</button>
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                    <button type="button" class="btn btn-default" style="width:100%;" ng-click="roadBase.deletTimeType('no',$index,TimeIntervalType.TimeIntervalTypeID,mapBase.nowSelectVer[0].State)">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿<nav class="navbar navbar-default" role="navigation" style="margin-bottom:0px;border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid;">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">放點位用網頁(放完後刪除)</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" style="width: 200px;" id="autocomplete" name="country" ng-keyup="mapBase.keySearch()" ng-model="mapBase.searchs" class="form-control" on-place-changed="mapBase.placeChanged()"
+                           places-auto-complete size="80"
+                           component-restrictions="{country:'TW'}"
+                           placeholder="地圖搜尋">
+                    <div id="selection"></div>
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="mapBase.searchMap()">搜尋</button>               
+            </form>
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+            </script>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="navbar-form navbar-left" role="search">
+                    </form>
+                </li>
+                <li><a href="#">登出</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

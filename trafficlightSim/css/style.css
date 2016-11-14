@@ -1,0 +1,74 @@
+body {
+  padding-top: 60px;
+}
+#map-canvas {
+    height: 85vh;
+    margin: 0px;
+    padding: 0px;
+}
+
+.trafficLight {
+    border-style: solid;
+    border-radius: 10px;
+    background-color: black;
+    margin: 2px;
+    padding: 2px;
+    display: inline-block;
+}
+
+.lightBulb {
+    font-size: 12px;
+    margin: 2px;
+}
+
+.lightBulb.red {
+    color: red;
+}
+
+.lightBulb.yellow {
+    color: yellow;
+}
+
+.lightBulb.green,
+.lightBulb.left,
+.lightBulb.straight,
+.lightBulb.right {
+    color: green;
+}
+
+#controlPanel {
+    font-size: large;
+}
+
+#controlPanel i.light {
+    color: green;
+}
+
+#controlPanel i.dark {
+    color: black;
+    opacity: 0.1;
+}
+
+#controlPanel i:hover {
+    font-size: x-large;
+    position: absolute;
+    cursor: pointer;
+}
+
+.rotate:hover, .fa-check:hover {
+    color: orange;
+}
+
+.delete:hover {
+    color: #C53430;
+}
+
+.progress {
+    height: 5px;
+    margin: 5px 0px 0px 0px;
+    /*margin-top margin-right margin-bottom margin-left*/
+}
+
+.table>thead>tr>th {
+    vertical-align: top;
+}

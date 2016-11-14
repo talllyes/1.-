@@ -1,0 +1,109 @@
+﻿<div class="panel panel-info nobr">
+    <div class="panel-body">
+        <div class="row" style="font-size:18px;">
+            <div class="col-xs-12" style="padding-left:10px;padding-right:10px;margin-bottom:10px;">
+                <div style="padding-left:25px;line-height:34px;vertical-align:middle;border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid;padding-bottom:10px;">
+                    <span class="boxTitle hidden-sm">週內日星期時段型態</span>
+                    <span class="boxTitle visible-sm-inline-block" style="font-size:15px;">週內日星期時段型態</span>
+                    <span ng-show="mapBase.nowSelectVer[0].State">
+                        <button type="button" style="border-color:white;" class="btn btn-default pull-right" ng-show="roadBase.allEditIcno" ng-click="roadBase.updateWeekType('edit',nowSelectVer.IntersectionDetailID,mapBase.nowSelectVer[0].State)" ng-if="mapBase.Premission.ItemName[3].Permission" data-toggle="tooltip" data-placement="bottom" title="修改週內日">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+            </script>
+            <div class="col-xs-6" style="margin-bottom:10px;vertical-align:middle;line-height:34px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        一：
+                    </div>
+                    <div class="col-xs-3">
+                        <div ng-hide="roadBase.weekType">{{nowSelectVer.WeekType.Monday}}</div>
+                        <select ng-model="nowSelectVer.WeekType.Monday" ng-options="m for m in roadBase.selectValue.WeekType" ng-show="roadBase.weekType"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6" style="margin-bottom:10px;vertical-align:middle;line-height:34px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        五：
+                    </div>
+                    <div class="col-xs-3">
+                        <div ng-hide="roadBase.weekType">{{nowSelectVer.WeekType.Friday}}</div>
+                        <select ng-model="nowSelectVer.WeekType.Friday" ng-options="m for m in roadBase.selectValue.WeekType" ng-show="roadBase.weekType"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6" style="margin-bottom:10px;vertical-align:middle;line-height:34px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        二：
+                    </div>
+                    <div class="col-xs-3">
+                        <div ng-hide="roadBase.weekType">{{nowSelectVer.WeekType.Tuesday}}</div>
+                        <select ng-model="nowSelectVer.WeekType.Tuesday" ng-options="m for m in roadBase.selectValue.WeekType" ng-show="roadBase.weekType"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6" style="margin-bottom:10px;vertical-align:middle;line-height:34px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        六：
+                    </div>
+                    <div class="col-xs-3">
+                        <div ng-hide="roadBase.weekType">{{nowSelectVer.WeekType.Saturday}}</div>
+                        <select ng-model="nowSelectVer.WeekType.Saturday" ng-options="m for m in roadBase.selectValue.WeekType" ng-show="roadBase.weekType"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6" style="margin-bottom:10px;vertical-align:middle;line-height:34px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        三：
+                    </div>
+                    <div class="col-xs-3">
+                        <div ng-hide="roadBase.weekType">{{nowSelectVer.WeekType.Wednesday}}</div>
+                        <select ng-model="nowSelectVer.WeekType.Wednesday" ng-options="m for m in roadBase.selectValue.WeekType" ng-show="roadBase.weekType"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6" style="margin-bottom:10px;vertical-align:middle;line-height:34px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        日：
+                    </div>
+                    <div class="col-xs-3">
+                        <div ng-hide="roadBase.weekType">{{nowSelectVer.WeekType.Sunday}}</div>
+                        <select ng-model="nowSelectVer.WeekType.Sunday" ng-options="m for m in roadBase.selectValue.WeekType" ng-show="roadBase.weekType"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6" style="margin-bottom:10px;vertical-align:middle;line-height:34px;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        四：
+                    </div>
+                    <div class="col-xs-3">
+                        <div ng-hide="roadBase.weekType">{{nowSelectVer.WeekType.Thursday}}</div>
+                        <select ng-model="nowSelectVer.WeekType.Thursday" ng-options="m for m in roadBase.selectValue.WeekType" ng-show="roadBase.weekType"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 collapse" style="margin-top:6px;" id="weekType1">
+                <div class="row">
+                    <div class="col-md-6 col-xs-6">
+                        <button type="button" style="width:100%;" class="btn btn-primary" ng-click="roadBase.updateWeekType('ok',nowSelectVer.WeekType.WeekTypeID,mapBase.nowSelectVer[0].State)">確定</button>
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                        <button type="button" style="width:100%;" class="btn btn-default" ng-click="roadBase.updateWeekType('no',nowSelectVer.WeekType.WeekTypeID,mapBase.nowSelectVer[0].State)">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

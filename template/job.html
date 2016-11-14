@@ -1,0 +1,206 @@
+﻿<div ng-controller="jobData as job">
+    <nav class="navbar navbar-default" role="navigation" style="border-radius:0px;background-color:#ffffff;border-top-color:#B0B0B0;border-bottom-color:#B0B0B0;margin-bottom:0px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">派工紀錄</a>
+            </div>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="job.jobSearch" placeholder="快速搜尋">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="job.jobSearch='';">清空</button>
+            </form>
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+            </script>
+            <div class="navbar-form navbar-right">
+                <button type="button" class="btn btn-default" ng-click="job.newData('edit','1')" ng-if="mapBase.Premission.ItemName[6].Permission" data-toggle="tooltip" data-placement="bottom" title="新增異動">
+                    <i class="fa fa-file-o"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div style="background-color:#E8E8E8;border-color:#BABABA;padding:10px;">
+        <div class="row collapse" id="jobInster1" style="padding-top:0px;">
+            <div class="col-md-12">
+                <div class="kai-callout kai-callout-primary fontBigSmaill" style="background-color:white;border-left-color:#CFCFCF;border-right-color:#CFCFCF;border-bottom-color:#CFCFCF;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            新增通報
+                        </div>
+                        <div class="col-md-12">
+                            <hr />
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">派工單號</div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="通報單位" ng-model="job.insertValue.ZoneName">
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">派工日期</div>
+                            <div class="col-md-9">
+                                <input type="text" readonly id="jobDate" class="form-control" placeholder="日期" ng-model="job.insertValue.JobDate">
+                                <script>
+                                    $('#jobDate').datetimepicker({
+                                        autoclose: true,
+                                        todayHighlight: true,
+                                        format: 'yyy-mm-dd hh:ii',
+                                        language: "zh-TW"
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">派工內容</div>
+                            <div class="col-md-9">
+                                <textarea type="text" style="height:100px;" class="form-control" placeholder="通報內容" ng-model="job.insertValue.JobContent"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">修復日期</div>
+                            <div class="col-md-9">
+                                <input type="text" readonly id="RepairDate" class="form-control" placeholder="日期" ng-model="job.insertValue.RepairDate">
+                                <script>
+                                    $('#RepairDate').datetimepicker({
+                                        autoclose: true,
+                                        todayHighlight: true,
+                                        format: 'yyy-mm-dd hh:ii',
+                                        language: "zh-TW"
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">影本下載</div>
+                            <div class="col-md-9">
+                                <input class="btn btn-primary" style="width:100%;" type="file" id="data1" name="data1" onchange="angular.element(this).scope().job.uploadData(this,'insert')">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div style="margin-top:10px;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary" style="width:100%" ng-click="job.newData('ok','1')">確定</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-default" style="width:100%" ng-click="job.newData('no','1')">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row collapse" id="jobUpdate1" style="padding-top:0px;">
+            <div class="col-md-12">
+                <div class="kai-callout kai-callout-primary fontBigSmaill" style="background-color:white;border-left-color:#CFCFCF;border-right-color:#CFCFCF;border-bottom-color:#CFCFCF;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            修改通報
+                            <button type="button" style="border:0px;" class="btn btn-default pull-right" ng-click="job.updateData('delete',job.updateValue.jobID)" data-toggle="tooltip" data-placement="bottom" title="刪除此筆通報">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <hr />
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">通報單位</div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="通報單位" ng-model="job.updateValue.ZoneName">
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">通報內容</div>
+                            <div class="col-md-9">
+                                <input type="text" readonly id="jobUpDate" class="form-control" placeholder="日期" ng-model="job.updateValue.JobDate">
+                                <script>
+                                    $('#jobUpDate').datetimepicker({
+                                        autoclose: true,
+                                        todayHighlight: true,
+                                        format: 'yyy-mm-dd hh:ii',
+                                        language: "zh-TW"
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">通報內容</div>
+                            <div class="col-md-9">
+                                <textarea type="text" style="height:100px;" class="form-control" placeholder="通報內容" ng-model="job.updateValue.JobContent"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">處理結果</div>
+                            <div class="col-md-9">
+                                <input type="text" readonly id="upRepairDate" class="form-control" placeholder="日期" ng-model="job.updateValue.RepairDate">
+                                <script>
+                                    $('#upRepairDate').datetimepicker({
+                                        autoclose: true,
+                                        todayHighlight: true,
+                                        format: 'yyy-mm-dd hh:ii',
+                                        language: "zh-TW"
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin:5px">
+                            <div class="col-md-2">備註</div>
+                            <div class="col-md-9">
+                                <input class="btn btn-primary" style="width:100%;" type="file" id="data2" name="data2" onchange="angular.element(this).scope().job.uploadData(this,'update')">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div style="margin-top:10px;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary" style="width:100%" ng-click="job.updateData('ok','1')">確定</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-default" style="width:100%" ng-click="job.updateData('no','1')">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info nobr collapse in" style="border-color:#CFCFCF;" id="jobShow1">
+            <div class="panel-body" style="padding-top:0px;padding-bottom:0px;">
+                <div class="row" style="font-size:18px;">
+                    <table class="table table-striped " style="margin-bottom:0px;">
+                        <thead>
+                            <tr>
+                                <th style="width:15%;">派工編號</th>
+                                <th style="width:15%;text-align:center;">派工日期</th>
+                                <th style="width:41%">派工內容</th>
+                                <th style="width:15%;text-align:center;">修復日期</th>
+                                <th style="width:7%">下載</th>
+                                <th style="width:7%" ng-if="mapBase.Premission.ItemName[6].Permission">編輯</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="Job in mapBase.Job |searchJobKey:job.jobSearch">
+                                <td ng-bind-html="Job.ZoneName"></td>
+                                <td style="text-align:center;" ng-bind-html="Job.JobDate"></td>
+                                <td ng-bind-html="Job.JobContent"></td>
+                                <td style="text-align:center;" ng-bind-html="Job.RepairDate"></td>
+                                <td><a ng-href="{{Job.Src}}" target="_blank" ng-hide="Job.SrcShow" style="border-color:white;" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></a></td>
+                                <td ng-if="mapBase.Premission.ItemName[6].Permission">
+                                    <button type="button" style="border-color:white;" class="btn btn-default pull-right" ng-click="job.updateData('edit','',Job)" data-toggle="tooltip" data-placement="bottom" title="新增路口點位">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

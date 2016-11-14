@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MapRoadTrafficSignal" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=KAI-PC\SQLEXPRESS;Initial Catalog=MapRoadTrafficSignal;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MapRoadTrafficSignalConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.WeekType" Member="WeekType">
+    <Type Name="WeekType">
+      <Column Name="WeekTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntersectionDetailID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Monday" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Tuesday" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Wednesday" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Thursday" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Friday" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Saturday" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Sunday" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemGroup" Member="ItemGroup">
+    <Type Name="ItemGroup">
+      <Column Name="ItemGroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemGroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Job" Member="Job">
+    <Type Name="Job">
+      <Column Name="JobID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntersectionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZoneName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="JobDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JobContent" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="RepairDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Src" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="EmployeeID" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ModifiedDate" AutoSync="Never" Type="System.DateTime" DbType="DateTime" IsDbGenerated="true" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Notice" Member="Notice">
+    <Type Name="Notice">
+      <Column Name="NoticeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntersectionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Who" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="NoticeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NoticeContent" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="EmployeeID" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ModifiedDate" AutoSync="Never" Type="System.DateTime" DbType="DateTime" IsDbGenerated="true" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Permission" Member="Permission">
+    <Type Name="Permission">
+      <Column Name="PermissionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserLoginID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UseItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimeIntervalType" Member="TimeIntervalType">
+    <Type Name="TimeIntervalType">
+      <Column Name="TimeIntervalTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntersectionDetailID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeType" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimeIntervalTypeDetail" Member="TimeIntervalTypeDetail">
+    <Type Name="TimeIntervalTypeDetail">
+      <Column Name="TimeIntervalTypeDetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TimeIntervalTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimePlanSN" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Hour" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Minute" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimePhase" Member="TimePhase">
+    <Type Name="TimePhase">
+      <Column Name="TimePhaseID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntersectionDetailID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimePhaseRoad" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ImgSrc" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimePhaseDetail" Member="TimePhaseDetail">
+    <Type Name="TimePhaseDetail">
+      <Column Name="TimePhaseDetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TimePhaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimePlanSN" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PH" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="G" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Y" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="R" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimePlan" Member="TimePlan">
+    <Type Name="TimePlan">
+      <Column Name="TimePlanID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntersectionDetailID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimePlanSN" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TimePhaseSN" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TimeDiff" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TimeCycle" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimePlanCycle" Member="TimePlanCycle">
+    <Type Name="TimePlanCycle">
+      <Column Name="IntersectionDetailID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimePlanSN" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Cycle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimePlanExcel" Member="TimePlanExcel">
+    <Type Name="TimePlanExcel">
+      <Column Name="IntersectionDetailID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimePlanSN" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="G" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PH" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Y" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="R" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TimePhaseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimePlanDetial" Member="TimePlanDetial">
+    <Type Name="TimePlanDetial">
+      <Column Name="IntersectionDetailID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimePhaseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TimePlanSN" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PH" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="G" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Y" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="R" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TimePhaseDetailID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UseItem" Member="UseItem">
+    <Type Name="UseItem">
+      <Column Name="UseItemID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ItemGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntersectionDetail" Member="IntersectionDetail">
+    <Type Name="IntersectionDetail">
+      <Column Name="IntersectionDetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntersectionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Controller" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="GPS" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="VersionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Src" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="EmployeeID" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TwoVer" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" AutoSync="Never" Type="System.DateTime" DbType="DateTime" IsDbGenerated="true" CanBeNull="true" />
+      <Column Name="TrafficLightJson" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Intersection" Member="Intersection">
+    <Type Name="Intersection">
+      <Column Name="IntersectionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Zone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="RoadName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Position" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ENumber" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="EmployeeID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" AutoSync="Never" Type="System.DateTime" DbType="DateTime" IsDbGenerated="true" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserLogin" Member="UserLogin">
+    <Type Name="UserLogin">
+      <Column Name="UserLoginID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="JobTitle" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" AutoSync="Never" Type="System.DateTime" DbType="DateTime" IsDbGenerated="true" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="admin" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

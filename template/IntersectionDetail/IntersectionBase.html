@@ -1,0 +1,108 @@
+﻿<div class="kai-nav {{mapBase.nowSelectVer[0].ClassTwo}}">
+    <div>
+        <button type="button" class="btn btn-default" style="margin-right:10px;float:left;margin-top:8px;" >
+            <span style="float:left;" ng-hide="mapBase.nowSelectVer[0].TwoVer || !mapBase.nowSelectVer[0].State" ng-if="mapBase.Premission.ItemName[3].Permission">
+                <span href="#" ng-hide="mapBase.nowSelectVer[0].TwoVer" ng-click="roadBase.newTwoVer('edit','1')" data-toggle="tooltip" data-placement="bottom" title="新增雙版本">目前選擇　{{mapBase.nowVer}} / {{mapBase.mapMarkerVer.length}} 版</span>
+            </span>
+            <span style="float:left;" ng-hide="mapBase.nowSelectVer[0].TwoVer || !mapBase.nowSelectVer[0].State" ng-if="!mapBase.Premission.ItemName[3].Permission">
+                <span href="#" ng-hide="mapBase.nowSelectVer[0].TwoVer" data-toggle="tooltip" data-placement="bottom">目前選擇　{{mapBase.nowVer}} / {{mapBase.mapMarkerVer.length}} 版</span>
+            </span>
+            <span style="float:left;" ng-hide="mapBase.nowSelectVer[0].TwoVer || mapBase.nowSelectVer[0].State">
+                <span href="#" ng-hide="mapBase.nowSelectVer[0].TwoVer" data-toggle="tooltip" data-placement="bottom" title="">目前選擇　{{mapBase.nowVer}} / {{mapBase.mapMarkerVer.length}} 版</span>
+            </span>
+            <span style="float:left;" ng-show="mapBase.nowSelectVer[0].TwoVer">
+                <span href="#" data-toggle="tooltip" ng-click="roadBase.changeTwoVer()" data-placement="bottom" title="切換">目前選擇　{{mapBase.nowVer}} / {{mapBase.mapMarkerVer.length}} 版</span>
+            </span>
+            <span style="float:left;">
+                <span href="#">　{{roadBase.tipss}}</span>
+            </span>
+        </button>
+        <div class="btn-group" style="margin-right:10px;float:left;margin-top:8px;">
+            <button type="button" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                異動紀錄 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="mapMake in mapBase.mapMarkerVer" id="ver{{mapMake.ver}}" ng-click="roadBase.changSelectIndex(mapMake)" ng-show="roadBase.allEditIcno"><a href="#">{{mapMake.ver}}</a></li>
+                <li ng-hide="roadBase.allEditIcno">
+                    <a href="#">版本編輯中</a>
+                </li>
+            </ul>
+        </div>
+        <div class="pull-right" style="margin-top:8px;padding-right:0;float:left;">
+            <button type="button" class="btn btn-default" ng-show="mapBase.nowSelectVer[0].State" ng-if="mapBase.Premission.ItemName[4].Permission" ng-click="roadBase.verDelete('edit')" data-toggle="tooltip" data-placement="bottom" title="刪除此版本">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default" data-toggle="tooltip" ng-click="roadBase.goToPhase(mapBase.nowSelectVer[0].IntersectionDetailID)" data-placement="bottom" title="動線規劃">
+                <i class="fa fa-road"></i>
+            </button>
+            <button type="button" class="btn btn-default" ng-click="roadBase.downloadExcel(mapBase.nowSelectVer[0].IntersectionDetailID)" data-toggle="tooltip" data-placement="bottom" title="下載Excel">
+                <i class="fa fa-table"></i>
+            </button>
+            <button type="button" class="btn btn-default" ng-if="mapBase.Premission.ItemName[3].Permission" ng-click="roadBase.newVer('edit','1')" data-toggle="tooltip" data-placement="bottom" title="新增異動">
+                <i class="fa fa-file-o"></i>
+            </button>
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+            </script>
+        </div>
+    </div>
+</div>
+<div id="newTwoVer1" class="collapse">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="bs-callout bs-callout-info" style="background-color:white;border-top-color:#CFCFCF;border-right-color:#CFCFCF;border-bottom-color:#CFCFCF;">
+                    <div style="margin-bottom:10px;">是否新增雙版本</div>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <button type="button" class="btn btn-primary" style="width:100%;" data-toggle="collapse" data-target="#newTwoVer1" ng-click="roadBase.newTwoVer('ok','1')">確定</button>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <button type="button" class="btn btn-default" style="width:100%;" data-toggle="collapse" data-target="#newTwoVer1" ng-click="roadBase.newTwoVer('no','1')">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="newVer1" class="collapse">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="bs-callout bs-callout-info" style="background-color:white;border-top-color:#CFCFCF;border-right-color:#CFCFCF;border-bottom-color:#CFCFCF;">
+                    <div style="margin-bottom:10px;">是否新增異動版本</div>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <button type="button" class="btn btn-primary" style="width:100%;" data-toggle="collapse" data-target="#newVer1" ng-click="roadBase.newVer('ok','1')">確定</button>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <button type="button" class="btn btn-default" style="width:100%;" data-toggle="collapse" data-target="#newVer1" ng-click="roadBase.newVer('no','1')">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="verDelete1" class="collapse">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="bs-callout bs-callout-info" style="background-color:white;border-top-color:#CFCFCF;border-right-color:#CFCFCF;border-bottom-color:#CFCFCF;">
+                    <div style="margin-bottom:10px;">是否刪除此版本</div>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <button type="button" class="btn btn-primary" style="width:100%;" data-toggle="collapse" ng-click="roadBase.verDelete('ok')">確定</button>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <button type="button" class="btn btn-default" style="width:100%;" data-toggle="collapse" ng-click="roadBase.verDelete('no')">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

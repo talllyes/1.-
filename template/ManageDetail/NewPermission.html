@@ -1,0 +1,37 @@
+﻿<div class="panel panel-info nobr" ng-repeat="PermissionDetail in manage.NullPremission.PermissionDetail" style="border-color: #CFCFCF;">
+    <div class="panel-body">
+        <div class="row" style="font-size: 18px;">
+            <div class="col-md-12" style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px;">
+                <div style="padding-left: 25px; line-height: 34px; vertical-align: middle; margin-bottom: 10px;">
+                    <span class="boxTitle">{{PermissionDetail.ItemGroupName}}</span>
+                </div>
+                <div class="kai-hr"></div>
+            </div>
+            <div class="col-md-6 fontBigSmaill" ng-repeat="ItemName in PermissionDetail.ItemName" style="margin-bottom: 10px; vertical-align: middle; line-height: 34px;">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="pull-right">
+                            {{ItemName.ItemName}}
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class='toggle switch {{ItemName.Class}}' ng-click="manage.changeOnOff(ItemName)">
+                            <div class='toggle-text-off'>OFF</div>
+                            <div class='glow-comp'></div>
+                            <div class='toggle-button'></div>
+                            <div class='toggle-text-on'>ON</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <button type="button" ng-click="manage.showNewUser('ok')" style="width: 100%;" class="btn btn-primary">確定</button>
+    </div>
+    <div class="col-xs-6">
+        <button type="button" ng-click="manage.showNewUser('no')" style="width: 100%;" class="btn btn-default">取消</button>
+    </div>
+</div>

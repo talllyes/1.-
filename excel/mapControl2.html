@@ -1,0 +1,44 @@
+﻿<custom-control id="homes" position="TOP_CENTER" index="1">
+    <div style="margin-top:10px;top:100px;position:fixed;" ng-show="mapBase.newMakerShow" id="insertMarkerCheck">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">是否設置點位</h3>
+            </div>
+            <div class="panel-body">
+                <button type="button" class="btn btn-primary" ng-click="mapBase.insertMaker('ok')">確定</button>
+                <button type="button" class="btn btn-default" ng-click="mapBase.insertMaker('no')">取消</button>
+            </div>
+        </div>
+    </div>
+</custom-control>
+<custom-control id="home" position="TOP_LEFT" index="1">
+    <div style="margin-top:10px;left:-220px;position:fixed;font-size:16px;font-family:微軟正黑體;" id="aaaaa">   
+        <div class="list-group" style="width:200px;">
+            <div href="#" class="list-group-item active" style="font-size:15px;font-family:微軟正黑體;height:55px;">
+                <span style="line-height:33px;text-align:center;">搜尋到{{searchMarker.length}}筆　　　</span>
+                <button type="button" class="btn btn-primary pull-right" ng-click="mapBase.keySearchClose()" data-toggle="tooltip" data-placement="bottom" title="隱藏視窗">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <a href="#" class="list-group-item" title="區域：{{searchMarker.Zone}}&#10;路口：{{searchMarker.RoadName|cleanBr}}" ng-click="mapBase.searchToPosition(this)" ng-repeat="searchMarker in searchMarker= (mapBase.searchMarker | searchMapKey: mapBase.searchs) | limitTo:6" style="font-size:14px;font-family: 微軟正黑體;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow:hidden;">
+                區域：<span ng-bind-html="searchMarker.Zone"></span>
+                <br />
+                路口：<span ng-bind-html="searchMarker.RoadName|toSpace"></span>
+            </a>
+        </div>     
+    </div>
+</custom-control>
+<custom-control id="home" position="TOP_RIGHT" index="10">
+    <div style="margin-top:10px;right:20px;position:fixed;font-size:16px;font-family:微軟正黑體;" id="aaaaaa">
+        <div class="list-group" style="width:200px;">
+            <div href="#" class="list-group-item active" style="font-size:15px;font-family:微軟正黑體;height:55px;">
+                <span style="line-height:33px;text-align:center;">總計 {{mapBase.setLoc.length}} 筆尚未設置點位</span>
+            </div>
+            <a href="#" class="list-group-item" title="區域：{{setLoc.Zone}}&#10;路口：{{setLoc.RoadName|cleanBr}}" ng-click="mapBase.insertMaker('edit',setLoc)" ng-repeat="setLoc in setLoc= (mapBase.setLoc | searchMapKey2: mapBase.searchs) | limitTo:6" style="font-size:14px;font-family: 微軟正黑體;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow:hidden;">
+                區域：<span ng-bind-html="setLoc.Zone"></span>
+                <br />
+                路口：<span ng-bind-html="setLoc.RoadName|toSpace"></span>
+            </a>
+        </div>
+    </div>
+</custom-control>

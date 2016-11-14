@@ -1,0 +1,98 @@
+﻿<div>
+    <div style="margin-bottom: 10px; font-size: 20px; text-align: center;">
+        <span style="line-height:40px;text-align:center;">使用者明細</span>
+        <button type="button" style="margin-right:0px;border:0px;" class="btn btn-default pull-right fontBigSmaill" ng-click="manage.editUser('no')" data-toggle="tooltip" data-placement="bottom" title="取消">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+    <div class="panel panel-info nobr" style="border-color: #CFCFCF;">
+        <div class="panel-body">
+            <div class="row" style="font-size: 18px;">
+                <div class="col-md-12" style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px;">
+                    <div style="padding-left: 25px; line-height: 34px; vertical-align: middle; margin-bottom: 10px;">
+                        <span class="boxTitle">基本資料</span>
+                    </div>
+                    <div class="kai-hr"></div>
+                </div>
+                <div class="col-md-12 fontBigSmaill" style="margin-bottom: 10px; vertical-align: middle; line-height: 34px;">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="pull-right">
+                                帳號：
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-xs-9">
+                            {{manage.EditUserMenu.UserID}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 fontBigSmaill" style="margin-bottom: 10px; vertical-align: middle; line-height: 34px;">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="pull-right">
+                                密碼：
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-xs-9">
+                            <input type="password" ng-model="manage.EditUserMenu.Password" style="width: 80%;" maxlength="18" class="form-control" placeholder="空白為原本密碼" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 fontBigSmaill" style="margin-bottom: 10px; vertical-align: middle; line-height: 34px;">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="pull-right">
+                                姓名：
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-xs-9">
+                            <input type="text" ng-model="manage.EditUserMenu.UserName" style="width: 80%;" maxlength="18" class="form-control" placeholder="姓名" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 fontBigSmaill" style="margin-bottom: 10px; vertical-align: middle; line-height: 34px;">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="pull-right">
+                                職稱：
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-xs-9">
+                            <input type="text" ng-model="manage.EditUserMenu.JobTitle" style="width: 80%;" maxlength="18" class="form-control" placeholder="職稱" />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="pull-right">
+                                管理者：
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-xs-9">
+                            <div class='toggle switch {{manage.EditUserMenu.admin.Class}}' ng-click="manage.changeOnOff(manage.EditUserMenu.admin)">
+                                <div class='toggle-text-off'>OFF</div>
+                                <div class='glow-comp'></div>
+                                <div class='toggle-button'></div>
+                                <div class='toggle-text-on'>ON</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-sm-3 col-xs-3">
+                            <div class="pull-right">
+                                啟用：
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-xs-9">
+                            <div class='toggle switch {{manage.EditUserMenu.State.Class}}' ng-click="manage.changeOnOff(manage.EditUserMenu.State)">
+                                <div class='toggle-text-off'>OFF</div>
+                                <div class='glow-comp'></div>
+                                <div class='toggle-button'></div>
+                                <div class='toggle-text-on'>ON</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

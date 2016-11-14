@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html ng-app="excel">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript" src="../js/angular-sanitize.min.js"></script>
+
+    <script type="text/javascript" src="excel.js"></script>
+</head>
+<body ng-controller="exc as ex">
+  
+        <div style="width:30%;float:left">
+            <div ng-repeat="rootList in ex.rootList">
+                資料夾：{{rootList.fileroot}}({{rootList.excel.length}})　<button type="button" ng-click="ex.import($index)">匯入</button><br /><br />
+            </div>
+        </div>
+        <div style="width:70%;float:left">
+            資料夾：{{ex.nowfileroot}}<br />
+            進度：{{ex.nowNum}} / {{ex.importNum}} <br />
+            共計匯入：{{ex.roadNum}}路口<br />
+            <span ng-bind-html="ex.error"></span>
+        </div>
+</body>
+</html>

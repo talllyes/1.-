@@ -1,0 +1,39 @@
+﻿<nav class="navbar navbar-default" role="navigation" style="margin-bottom:0px;border:0px;border-bottom:1px;border-color:#B0B0B0;border-style:solid;">
+    <div class="navbar-header" style="float:left;">
+        <a class="navbar-brand" href="#">交通號誌時制管理系統</a>
+    </div>
+    <div style="margin-top:8px;">
+        <form role="search" style="float:left;">
+            <div style="float:left;">
+                <input type="text" style="width: 400px;" id="autocomplete" name="country" ng-keyup="mapBase.keySearch()" ng-model="mapBase.searchs" class="form-control" on-place-changed="mapBase.placeChanged()"
+                       places-auto-complete size="80"
+                       component-restrictions="{country:'TW'}"
+                       placeholder="地圖搜尋">
+                <div id="selection"></div>
+            </div>
+            <button type="submit" style="margin-left:5px;" class="btn btn-default" ng-click="mapBase.searchMap()">搜尋</button>
+            <button type="button" class="btn btn-default" ng-click="mapBase.insertMaker('edit')" ng-show="mapBase.newMM" ng-if="mapBase.Premission.ItemName[0].Permission" aria-label="Left Align" data-toggle="tooltip" data-placement="bottom" title="新增路口點位">
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            </button>
+        </form>
+        <div class="btn-group" style="margin-left:30px;line-height:30px;vertical-align:middle;">
+            地圖縮放：{{mapBase.map.getZoom()}}　
+            <span ng-show="mapBase.map.getZoom()<16" style="color:red">點位隱藏</span>
+        </div>
+        <div class="btn-group pull-right" style="margin-right:30px;">
+            <button type="button" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                {{mapBase.Premission.JobTitle}} - {{mapBase.Premission.UserName}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#" ng-click="mapBase.editMy('edit')">修改基本資料</a></li>
+                <li><a href="manage.aspx" ng-if="mapBase.Premission.admin">帳號權限管理</a></li>
+                <li><a href="login.aspx?logout=true">登出</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
+</nav>
